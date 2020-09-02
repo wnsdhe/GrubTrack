@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {Route} from 'react-router-dom';
 import './App.css';
+import Dashboard from './Dashboard/Dashboard';
 
-function App() {
-  return (
-    <div>Start of GrubTrack</div>
-  );
+class App extends Component {
+  render () {
+    return (
+      <div>
+        <Dashboard></Dashboard>
+      </div>
+    );
+  }
+
 }
 
 export default App;
