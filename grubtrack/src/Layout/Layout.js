@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Layout.css';
 import Switch from 'react-bootstrap/esm/Switch';
 import Dashboard from '../Dashboard/Dashboard';
+import Login from '../Login/Login';
 import { Route } from 'react-router-dom';
 
 class Layout extends Component {
@@ -23,10 +24,9 @@ class Layout extends Component {
     return (
       <div>
         <div>
-          this is a layout
         </div>
         <Switch>
-          <Route path="/" exact component={Dashboard}/>
+          <Route path="/" exact component={Login}/>
           {/* <Route path="/login"/> */}
         </Switch>
       </div>
