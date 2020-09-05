@@ -48,13 +48,13 @@ let Login = () => {
             </div>
             <div id="navbarMenuHeroC" className="navbar-menu">
               <div className="navbar-end">
-                <a className="navbar-item is-active" href="#/home">
+                <a className="navbar-item" href="#/home">
                   Home
                 </a>
-                <a className="navbar-item is-active" href="#/shop">
+                <a className="navbar-item" href="https://www.wundergrubs.com/store/c1/Featured_Products.html">
                   Shop
                 </a>
-                <a className="navbar-item" href="#/login">
+                <a className="navbar-item is-active" href="#/login">
                   <span>Login</span>
                 </a>
                 <a className="navbar-item" href="#/register">
@@ -111,7 +111,7 @@ let Login = () => {
           <div className="container">
             <ul>
               <li><a>Home</a></li>
-              <li><a>Shop</a></li>
+              <li><a href="https://www.wundergrubs.com/store/c1/Featured_Products.html">Shop</a></li>
               <li class="is-active"><a>Login</a></li>
               <li><a>Register</a></li>
             </ul>
