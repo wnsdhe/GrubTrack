@@ -50,7 +50,10 @@ let Login = () => {
               <div className="navbar-end">
                 <a className="navbar-item is-active" href="#/home">
                   Home
-            </a>
+                </a>
+                <a className="navbar-item is-active" href="#/shop">
+                  Shop
+                </a>
                 <a className="navbar-item" href="#/login">
                   <span>Login</span>
                 </a>
@@ -84,14 +87,14 @@ let Login = () => {
               <br></br>
               <div class="columns ">
                 <div class="column">
-                <input type="checkbox"></input> Remember me
+                  <input type="checkbox"></input> Remember me
                 </div>
                 <div class="column">
-                <input type="checkbox"></input> I agree to the <a href="#">terms and conditions</a>
+                  <input type="checkbox"></input> I agree to the <a href="#">terms and conditions</a>
                 </div>
-                
+
               </div>
-              
+
               <br></br>
               <div class="buttons">
                 <button class="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth">Login</button>
