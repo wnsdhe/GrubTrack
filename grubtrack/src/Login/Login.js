@@ -82,7 +82,7 @@ let Login = () => {
             <div className="column is-half">
             <div className="box loginbox column is-three-fifths is-offset-one-fifth">
             <br></br>
-            <div className="title is-size-1-widescreen 	 is-family-sans-serif">Welcome to WunderTrack!</div>
+            <div className="title is-size-1-widescreen 	 is-family-sans-serif">Welcome to GrubTrack!</div>
             <form>
               <div className="field">
                 <div className="control">
