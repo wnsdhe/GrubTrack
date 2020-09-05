@@ -1,16 +1,20 @@
 import React from 'react';
 import './App.css';
-import Switch from 'react-bootstrap/esm/Switch';
 import Layout from './Layout/Layout';
-import { Route } from 'react-router-dom';
+import Login from './Login/Login';
+import { Route, Router, Switch } from 'react-router-dom';
+import history from './history';
 
 function App() {
   return (
     <div>
-      <Switch>
-        <Route path="/" exact component={Layout}/>
-        {/* <Route path="/login"/> */}
-      </Switch>
+      <Router history={history}>
+        <Switch>
+          <Route path="/" exact component={Login}/>
+          <Route path="/layout" exact component={Layout}/>
+        </Switch>
+      </Router>
+
     </div>
   );
 }
