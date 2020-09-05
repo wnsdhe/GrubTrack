@@ -46,17 +46,17 @@ let Login = () => {
                 <span aria-hidden="true"></span>
               </a>
             </div>
-            <div id="navbarMenuHeroB" className="navbar-menu">
+            <div id="navbarMenuHeroC" className="navbar-menu">
               <div className="navbar-end">
                 <a className="navbar-item is-active" href="#/home">
                   Home
             </a>
-                  <a className="navbar-item" href="#/login">
-                    <span>Login</span>
-                  </a>
-                  <a className="navbar-item" href="#/register">
-                    <span>Register</span>
-                  </a>
+                <a className="navbar-item" href="#/login">
+                  <span>Login</span>
+                </a>
+                <a className="navbar-item" href="#/register">
+                  <span>Register</span>
+                </a>
               </div>
             </div>
           </div>
@@ -64,26 +64,40 @@ let Login = () => {
       </div>
 
       <div className="hero-body">
-        <div className="container has-text-centered">
-          <h3 class="title has-text-white">Login</h3>
-          <hr class="login-hr"></hr>
-          <div class="box">
-            <div class="box">
-              <img src="https://www.wundergrubs.com/uploads/7/3/8/6/73866685/published/weebly-logo.jpg?1590335139" alt=""></img>
-            </div>
-            <div class="title has-text-grey is-5">Please enter your email and password.</div>
+        <div className="container has-text-centered ">
+          <div class="box loginbox column is-three-fifths is-offset-one-fifth">
+            <br></br>
+            <div class="title is-1 is-family-sans-serif">Welcome to WunderTrack!</div>
             <form>
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="email" placeholder="Email" autofocus=""></input>
+                  <input class="input is-rounded" type="email" placeholder="Email" autofocus="" autoComplete></input>
                 </div>
               </div>
+              <br></br>
+              <a class="is-pulled-right mb-1">Forget Password?</a>
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="password" placeholder="Password"></input>
+                  <input class="input is-rounded" type="password" placeholder="Password" autoComplete></input>
                 </div>
               </div>
-              <button class="button is-block is-danger is-large is-fullwidth">Login</button>
+              <br></br>
+              <div class="columns ">
+                <div class="column">
+                <input type="checkbox"></input> Remember me
+                </div>
+                <div class="column">
+                <input type="checkbox"></input> I agree to the <a href="#">terms and conditions</a>
+                </div>
+                
+              </div>
+              
+              <br></br>
+              <div class="buttons">
+                <button class="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth">Login</button>
+                <button class="regb button is-block is-danger is-outlined is-rounded is-medium column is-offset-one-fifth">Register</button>
+              </div>
+
             </form>
           </div>
         </div>
@@ -92,7 +106,12 @@ let Login = () => {
       <div className="hero-foot">
         <nav className="tabs is-boxed is-fullwidth">
           <div className="container">
-
+            <ul>
+              <li><a>Home</a></li>
+              <li><a>Shop</a></li>
+              <li class="is-active"><a>Login</a></li>
+              <li><a>Register</a></li>
+            </ul>
           </div>
         </nav>
       </div>
