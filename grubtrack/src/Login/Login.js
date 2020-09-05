@@ -32,7 +32,7 @@ let Login = () => {
   })
 
   return (
-    <section className="hero is-fullheight">
+    <section className="hero is-fullheight ">
       <div className="hero-head">
         <nav className="navbar">
           <div className="container">
@@ -68,41 +68,55 @@ let Login = () => {
 
       <div className="hero-body">
         <div className="container has-text-centered ">
-          <div class="box loginbox column is-three-fifths is-offset-one-fifth">
+          <div className="columns">
+            <div className="column is-half wunderback has-text-centered">
+              <img className="mt-5" alt="" src="https://www.wundergrubs.com/uploads/7/3/8/6/73866685/edited/homepage-taglinerevised_14.png"></img>
+              <br></br>
+              <div className="is-grouped mt-3">
+              <a className="shopb button mr-5 is-dark" href="https://www.wundergrubs.com/store/c1/Featured_Products.html">SHOP NOW</a>
+              <a className="shopb button ml-5 is-dark" href="https://www.instagram.com/wundergrubs/">INSTAGRAM</a>
+              </div>
+            </div>
+            <div className="column is-half">
+            <div className="box loginbox column is-three-fifths is-offset-one-fifth">
             <br></br>
-            <div class="title is-1 is-family-sans-serif">Welcome to WunderTrack!</div>
+            <div className="title is-1 is-family-sans-serif">Welcome to WunderTrack!</div>
             <form>
-              <div class="field">
-                <div class="control">
-                  <input class="input is-rounded" type="email" placeholder="Email" autofocus="" autoComplete></input>
+              <div className="field">
+                <div className="control">
+                  <input className="input is-rounded" type="email" placeholder="Email" autoFocus="" autoComplete="on"></input>
                 </div>
               </div>
               <br></br>
               <a class="is-pulled-right mb-1">Forget Password?</a>
-              <div class="field">
-                <div class="control">
-                  <input class="input is-rounded" type="password" placeholder="Password" autoComplete></input>
+              <a className="is-pulled-right mb-1">Forget Password?</a>
+              <div className="field">
+                <div className="control">
+                  <input className="input is-rounded" type="password" placeholder="Password" autoComplete="on"></input>
                 </div>
               </div>
               <br></br>
-              <div class="columns ">
-                <div class="column">
+              <div className="columns ">
+                <div className="column">
                   <input type="checkbox"></input> Remember me
                 </div>
-                <div class="column">
+                <div className="column">
                   <input type="checkbox"></input> I agree to the <a href="#">terms and conditions</a>
                 </div>
 
               </div>
 
               <br></br>
-              <div class="buttons">
-                <button class="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth">Login</button>
-                <button class="regb button is-block is-danger is-outlined is-rounded is-medium column is-offset-one-fifth">Register</button>
+              <div className="buttons">
+                <button className="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth">Login</button>
+                <button className="regb button is-block is-danger is-outlined is-rounded is-medium column is-two-fifth">Register</button>
               </div>
 
             </form>
           </div>
+            </div>
+          </div>
+          
         </div>
       </div>
 
@@ -112,7 +126,7 @@ let Login = () => {
             <ul>
               <li><a>Home</a></li>
               <li><a href="https://www.wundergrubs.com/store/c1/Featured_Products.html">Shop</a></li>
-              <li class="is-active"><a>Login</a></li>
+              <li className="is-active"><a>Login</a></li>
               <li><a>Register</a></li>
             </ul>
           </div>

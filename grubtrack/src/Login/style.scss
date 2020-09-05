@@ -7,15 +7,19 @@
 .wunderlogo{
     min-height: 90px;
 }
-.loginb{
-    margin-left: 3rem;
-}
-.regb{
-    margin-right: 3rem;
+.wunderback{
+    background-image: url("https://www.wundergrubs.com/uploads/7/3/8/6/73866685/background-images/temp/73866685_9.jpg?641354282");
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    
 }
 .mobile-menu{
     position: fixed;
     right: 2em;
     top: 3em;
     opacity: 0.98;
+}
+.shopb{
+    opacity: 0.7;
 }
