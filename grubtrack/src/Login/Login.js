@@ -69,9 +69,9 @@ let Login = () => {
       <div className="line"></div>
 
       <div className="hero-body">
-        <div className="container has-text-centered ">
-          <div className="columns">
-            <div className="column is-half wunderback has-text-centered">
+        <div className="container is-fluid ">
+          <div className="columns is-vcentered has-text-centered">
+            <div className="column box wunderback has-text-centered">
               <img className="mt-5" alt="" src="https://www.wundergrubs.com/uploads/7/3/8/6/73866685/edited/homepage-taglinerevised_14.png"></img>
               <br></br>
               <div className="is-grouped mt-3">
@@ -82,11 +82,11 @@ let Login = () => {
             <div className="column is-half">
             <div className="box loginbox column is-three-fifths is-offset-one-fifth">
             <br></br>
-            <div className="title is-1 is-family-sans-serif">Welcome to WunderTrack!</div>
+            <div className="title is-size-1-widescreen 	 is-family-sans-serif">Welcome to WunderTrack!</div>
             <form>
               <div className="field">
                 <div className="control">
-                  <input className="input is-rounded" type="email" placeholder="Email" autoFocus="" autoComplete="on"></input>
+                  <input className="input is-rounded" type="email" placeholder="Email" autoFocus autoComplete="on"></input>
                 </div>
               </div>
               <br></br>
