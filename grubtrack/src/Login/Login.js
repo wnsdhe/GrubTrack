@@ -66,6 +66,8 @@ let Login = () => {
         </nav>
       </div>
 
+      <div className="line"></div>
+
       <div className="hero-body">
         <div className="container has-text-centered ">
           <div className="columns">
@@ -120,6 +122,7 @@ let Login = () => {
       </div>
 
       <div className="hero-foot">
+        
         <nav className="tabs is-boxed is-fullwidth">
           <div className="container">
             <ul>
