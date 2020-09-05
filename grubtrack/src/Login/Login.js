@@ -88,7 +88,6 @@ let Login = () => {
                 </div>
               </div>
               <br></br>
-              <a class="is-pulled-right mb-1">Forget Password?</a>
               <a className="is-pulled-right mb-1">Forget Password?</a>
               <div className="field">
                 <div className="control">
