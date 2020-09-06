@@ -49,7 +49,7 @@ let Login = () => {
             </div>
             <div id="navbarMenuHeroC" className="navbar-menu">
               <div className="navbar-end">
-                <a className="navbar-item" href="#/home">
+                <a className="navbar-item" href="https://www.wundergrubs.com/">
                   Home
                 </a>
                 <a className="navbar-item" href="https://www.wundergrubs.com/store/c1/Featured_Products.html">
@@ -127,7 +127,7 @@ let Login = () => {
         <nav className="tabs is-boxed is-fullwidth">
           <div className="container">
             <ul>
-              <li><a>Home</a></li>
+              <li><a href="https://www.wundergrubs.com/">Home</a></li>
               <li><a href="https://www.wundergrubs.com/store/c1/Featured_Products.html">Shop</a></li>
               <li className="is-active"><a>Login</a></li>
               <li><a>Register</a></li>
