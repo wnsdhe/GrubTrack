@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import faker from "faker";
 import './Layout.scss';
 import Sidebar from '../Components/Sidebar'
-// import Switch from 'react-bootstrap/esm/Switch';
-// import Login from '../Login/Login';
-// import { Route } from 'react-router-dom';
+import Dashboard from '../Dashboard/Dashboard';
+import history from '../history';
+import { Route, Router, Switch } from 'react-router-dom';
 
 class Layout extends Component {
   // constructor(props){
@@ -32,6 +32,12 @@ class Layout extends Component {
           </div>
           <div className="column Content">
             hello this is layout
+            {/* <Router history={history}>
+              <Switch>
+                <Route path="/" exact component={Dashboard}/>
+              </Switch>
+            </Router> */}
+            <Dashboard/>
           </div>
         </div>
       </div>
