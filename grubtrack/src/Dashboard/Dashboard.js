@@ -20,7 +20,7 @@ class Dashboard extends Component {
     console.log("HEHLKJF:LKHSDL:FKJSD:LFKJSD:LJKf;lkSJ");
     return (
       <div>
-        <div className="column box wunderback has-text-centered">
+        <div className="column box wunderback-layout has-text-centered">
           Placeholder for Some text
         </div>
         <div>THIS IS THE DASHBOARD</div>   
