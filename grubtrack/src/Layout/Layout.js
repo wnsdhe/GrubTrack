@@ -52,7 +52,7 @@ class Layout extends Component {
                     <a className="navbar-item" href="https://www.wundergrubs.com/">
                       Home
                     </a>
-                    <a className="navbar-item" href="https://www.wundergrubs.com/">
+                    <a className="navbar-item" href="/">
                       Logout
                     </a>
                   </div>
@@ -60,6 +60,7 @@ class Layout extends Component {
               </div>
             </nav>
           </div>
+          <hr></hr>
             {/* <Router history={history}>
               <Switch>
                 <Route path="/" exact component={Dashboard}/>
