@@ -7,15 +7,12 @@ import history from './history';
 
 function App() {
   return (
-    <div>
       <Router history={history}>
         <Switch>
           <Route path="/" exact component={Login}/>
           <Route path="/layout" exact component={Layout}/>
         </Switch>
       </Router>
-
-    </div>
   );
 }
 

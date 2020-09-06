@@ -110,7 +110,7 @@ let Login = () => {
 
               <br></br>
               <div className="buttons">
-                <button className="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth" onClick={() => history.push('/layout')}>Login</button>
+                <button className="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth" onClick={() => {history.push('/layout')}}>Login</button>
                 <button className="regb button is-block is-danger is-outlined is-rounded is-medium column is-two-fifth">Register</button>
               </div>
 

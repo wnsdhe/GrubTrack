@@ -1,0 +1,32 @@
+.SidebarContainer {
+  position: sticky;
+  top: 1vh;
+  flex-direction: column;
+  align-content: space-around;
+  height: 98vh;
+  margin-top: 1vh;
+  .menu {
+    margin-top: 1em;
+    margin-bottom: auto;
+    width: 95%;
+  }
+  .menu-label {
+    margin-left: 1em;
+  }
+  .logoContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .LogoContainer {
+      margin: unset;
+      .logo {
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+  .footer {
+    padding: 1.5rem 1.5rem;
+  }
+}
