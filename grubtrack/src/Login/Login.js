@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from 'react';
 import history from '../history';
-import './style.scss'
+import './Login.scss'
 
 function burger_menu() {
   // Get all "navbar-burger" elements

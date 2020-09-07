@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './DashboardButton.css';
 
 
 class DashboardButton extends Component {
@@ -7,9 +7,12 @@ class DashboardButton extends Component {
   render() {
     return(
       <div className='button'>
-      <button class='DashboardButton'>
-      {this.props.children}
-      </button>
+        <button className='DashboardButton'>
+          <img className='iconImage' src={this.props.image}></img>
+        </button>
+        <div className='buttonTextContainer'>
+          <div className='buttonText'>{this.props.children}</div>
+        </div>
       </div>
     )
   }

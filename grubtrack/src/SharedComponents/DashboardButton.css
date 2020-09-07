@@ -1,0 +1,31 @@
+
+.DashboardButton {
+  /* -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc; */
+  box-shadow: 2px 3px 4px #ccc;
+  background-color: white;
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+  position: absolute;
+  outline:none;
+}
+.DashboardButton:hover {
+  background-color: #dbdbdb;
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+  position: absolute;
+}
+.button {
+  border-style: none!important;
+  margin: 5rem;
+}
+.iconImage {
+  height: 6rem;
+  width: 6rem;
+}
+.buttonText {
+  top: 6rem;
+  position: relative;
+}

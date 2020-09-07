@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Dashboard.css';
 import DashboardButton from '../SharedComponents/DashboardButton';
-import Icon1 from '../SharedImages/turtle1.png';
+import Icon1 from '../SharedImages/add2.png';
 
 class Dashboard extends Component {
   // constructor(props){
@@ -25,8 +25,17 @@ class Dashboard extends Component {
         <div className="column box wunderback-layout has-text-centered">
           Placeholder for Some text
         </div>
-        <div>THIS IS THE DASHBOARD
-          <DashboardButton> <img alt="Icon1" className="dashboardIcon" src={Icon1} /> YourText1 </DashboardButton>
+        <div className="buttonContainer">
+          <div>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+          </div>
+          <div>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+          </div>
         </div>
       </div>
     );
