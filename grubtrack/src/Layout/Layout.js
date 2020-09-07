@@ -5,6 +5,7 @@ import Sidebar from '../Components/Sidebar'
 import Dashboard from '../Dashboard/Dashboard';
 import history from '../history';
 import { Route, Router, Switch } from 'react-router-dom';
+import wunderIcon from '../SharedImages/WGcolorful@2x.png';
 
 class Layout extends Component {
   // constructor(props){
@@ -39,7 +40,7 @@ class Layout extends Component {
               <div className="container">
                 <div className="navbar-brand">
                   <a href="https://www.wundergrubs.com/" className="navbar-item">
-                    <img className="wunderlogo image" src="https://www.wundergrubs.com/uploads/7/3/8/6/73866685/editor/wg-newlogo-2020.jpg?1593719609" alt="Logo"></img>
+                    <img className="wunderlogo image" src={wunderIcon} alt="Logo"></img>
                   </a>
                   <a role="button" className="navbar-burger" data-target="navbarMenuHeroC" aria-label="menu" aria-expanded="false">
                     <span aria-hidden="true"></span>
