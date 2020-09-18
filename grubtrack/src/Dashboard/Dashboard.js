@@ -19,7 +19,24 @@ class Dashboard extends Component {
   render() {
     console.log("HEHLKJF:LKHSDL:FKJSD:LFKJSD:LJKf;lkSJ");
     return (
-      <div>THIS IS THE DASHBOARD</div>
+      <div>
+        <div className="column box wunderback-layout has-text-centered">
+          Placeholder for Some text
+        </div>
+        <div className="buttonContainer">
+          <div>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+          </div>
+          <div>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+            <DashboardButton image = {Icon1}> YourText1 </DashboardButton>
+          </div>
+          
+        </div>
+      </div>
     );
   }
 }

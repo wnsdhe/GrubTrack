@@ -1,0 +1,35 @@
+.wunderlogo{
+    min-height: 90px;
+}
+.wunderback{
+    background-image: url("https://www.wundergrubs.com/uploads/7/3/8/6/73866685/background-images/temp/73866685_9.jpg?641354282");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0 0 0 ;
+    .cookie{   
+        max-height: 33vh;
+        position: relative;
+    } 
+}
+.mobile-menu{
+    position: fixed;
+    right: 2em;
+    top: 3em;
+    opacity: 0.98;
+}
+.shopb{
+    opacity: 0.7;
+}
+.line{
+    background-color:#D3D3D3;
+    height: 0.8px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero-body{
+    background-color: #f9f9f9;
+}
+.box {
+    margin-bottom: auto;
+}
