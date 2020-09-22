@@ -1,11 +1,22 @@
 ﻿<Properties StartupConfiguration="{5E3CDC2D-61D4-4C10-83E2-6874E95D6C14}|Default">
-  <MonoDevelop.Ide.ItemProperties.Server FirstBuild="True" PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Server PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Server/Controllers/LoginController.cs">
+    <Files>
+      <File FileName="Server/Controllers/LoginController.cs" Line="50" Column="10" />
+      <File FileName="Server/Contexts/ApplicationDbContext.cs" />
+      <File FileName="Server/Models/UserRole.cs" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Server" expanded="True">
-            <Node name="Server" expanded="True" />
+            <Node name="Server" expanded="True">
+              <Node name="Contexts" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="LoginController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
