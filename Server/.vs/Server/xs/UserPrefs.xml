@@ -1,14 +1,17 @@
 ﻿<Properties StartupConfiguration="{5E3CDC2D-61D4-4C10-83E2-6874E95D6C14}|Default">
   <MonoDevelop.Ide.ItemProperties.Server PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Server/Models.Context/DataContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Server/Controllers/TransactionsController.cs">
     <Files>
-      <File FileName="Server/Startup.cs" Line="38" Column="32" />
-      <File FileName="Server/appsettings.json" Line="4" Column="5" />
-      <File FileName="Server/Controllers/TransactionsController.cs" Line="42" Column="35" />
-      <File FileName="Server/Server.csproj" Line="11" Column="27" />
-      <File FileName="Server/Program.cs" Line="35" Column="24" />
-      <File FileName="Server/Properties/launchSettings.json" Line="1" Column="1" />
-      <File FileName="Server/Models.Context/TransactionsContext.cs" Line="19" Column="18" />
+      <File FileName="Server/BusinessLogic/User/User.cs" Line="13" Column="1" />
+      <File FileName="Server/BusinessLogic/User/Login.cs" Line="63" Column="37" />
+      <File FileName="Server/Controllers/UserController.cs" Line="19" Column="1" />
+      <File FileName="Server/Server.csproj" Line="1" Column="1" />
+      <File FileName="Server/Program.cs" Line="1" Column="1" />
+      <File FileName="Server/appsettings.json" Line="1" Column="1" />
+      <File FileName="Server/BusinessLogic/Interfaces/IJwtGenerator.cs" Line="8" Column="42" />
+      <File FileName="Server/Infrastructure/Security/JwtGenerator.cs" Line="18" Column="73" />
+      <File FileName="Server/Startup.cs" Line="83" Column="36" />
+      <File FileName="Server/Controllers/TransactionsController.cs" Line="26" Column="12" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,12 +19,9 @@
           <Option id="ShowAllFiles" value="True" />
           <Node name="Server" expanded="True">
             <Node name="Server" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Models.Context" expanded="True">
-                <Node name="DataContext.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="TransactionsController.cs" selected="True" />
               </Node>
-              <Node name="Properties" expanded="True" />
             </Node>
           </Node>
         </State>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Server.Models;
@@ -23,6 +24,7 @@ namespace Server.Controllers
 
         // GET: api/transactions
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Transactions>>> Get()
         {
             var values = await _context.Transactions.ToListAsync();
