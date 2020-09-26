@@ -1,22 +1,18 @@
 ﻿<Properties StartupConfiguration="{5E3CDC2D-61D4-4C10-83E2-6874E95D6C14}|Default">
   <MonoDevelop.Ide.ItemProperties.Server PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Server/BusinessLogic/User/CurrentUser.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Server/Controllers/TransactionsController.cs">
     <Files>
-      <File FileName="Server/BusinessLogic/User/User.cs" Line="13" Column="1" />
-      <File FileName="Server/BusinessLogic/User/Login.cs" Line="63" Column="37" />
-      <File FileName="Server/Controllers/UserController.cs" Line="26" Column="1" />
-      <File FileName="Server/Server.csproj" Line="1" Column="1" />
-      <File FileName="Server/Program.cs" Line="1" Column="1" />
-      <File FileName="Server/appsettings.json" Line="1" Column="1" />
-      <File FileName="Server/BusinessLogic/Interfaces/IJwtGenerator.cs" Line="8" Column="42" />
-      <File FileName="Server/Infrastructure/Security/JwtGenerator.cs" Line="18" Column="73" />
-      <File FileName="Server/Startup.cs" Line="72" Column="1" />
-      <File FileName="Server/Controllers/TransactionsController.cs" Line="36" Column="19" />
-      <File FileName="Server/BusinessLogic/User/Register.cs" Line="31" Column="27" />
-      <File FileName="Server/BusinessLogic/Validators/ValidatorExtensions.cs" Line="21" Column="1" />
-      <File FileName="Server/BusinessLogic/Interfaces/IUserAccessor.cs" Line="9" Column="1" />
-      <File FileName="Server/Infrastructure/Security/UserAccessor.cs" Line="21" Column="29" />
-      <File FileName="Server/BusinessLogic/User/CurrentUser.cs" Line="6" Column="1" />
+      <File FileName="Server/Controllers/TransactionsController.cs" Line="38" Column="65" IsPinned="True" />
+      <File FileName="Server/BusinessLogic/User/Login.cs" Line="63" Column="38" />
+      <File FileName="Server/BusinessLogic/User/CurrentUser.cs" Line="39" Column="34" />
+      <File FileName="Server/Models/Transactions.cs" Line="7" Column="10" />
+      <File FileName="Server/BusinessLogic/User/User.cs" Line="13" Column="2" />
+      <File FileName="Server/Controllers/UserController.cs" Line="1" Column="1" />
+      <File FileName="Server/Models/AppUser.cs" Line="6" Column="35" />
+      <File FileName="Server/Infrastructure/Security/JwtGenerator.cs" Line="1" Column="1" />
+      <File FileName="Server/BusinessLogic/User/Register.cs" Line="83" Column="38" />
+      <File FileName="Server/BusinessLogic/Interfaces/IUserAccessor.cs" Line="1" Column="1" />
+      <File FileName="Server/Infrastructure/Security/UserAccessor.cs" Line="18" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,13 +20,15 @@
           <Node name="Server" expanded="True">
             <Node name="Server" expanded="True">
               <Node name="BusinessLogic" expanded="True">
-                <Node name="User" expanded="True">
-                  <Node name="CurrentUser.cs" selected="True" />
-                </Node>
+                <Node name="User" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="TransactionsController.cs" selected="True" />
               </Node>
               <Node name="Infrastructure" expanded="True">
                 <Node name="Security" expanded="True" />
               </Node>
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>

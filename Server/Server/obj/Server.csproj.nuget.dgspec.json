@@ -14,7 +14,7 @@
         "outputPath": "/Users/joonohchun/Projects/GrubTrack/Server/Server/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/joonohchun/.config/NuGet/NuGet.Config"
+          "/Users/joonohchun/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
