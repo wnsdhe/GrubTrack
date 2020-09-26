@@ -16,6 +16,7 @@
     <Folder Include="BusinessLogic\Interfaces\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Infrastructure\Security\" />
+    <Folder Include="BusinessLogic\Validators\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
