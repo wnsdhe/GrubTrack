@@ -5756,19 +5756,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/joonohchun/.nuget/packages/": {}
+    "/Users/hatsune/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/joonohchun/Projects/GrubTrack/Server/Server/Server.csproj",
+      "projectUniqueName": "/Users/hatsune/Documents/GitHub/GrubTrack/Server/Server/Server.csproj",
       "projectName": "Server",
-      "projectPath": "/Users/joonohchun/Projects/GrubTrack/Server/Server/Server.csproj",
-      "packagesPath": "/Users/joonohchun/.nuget/packages/",
-      "outputPath": "/Users/joonohchun/Projects/GrubTrack/Server/Server/obj/",
+      "projectPath": "/Users/hatsune/Documents/GitHub/GrubTrack/Server/Server/Server.csproj",
+      "packagesPath": "/Users/hatsune/.nuget/packages/",
+      "outputPath": "/Users/hatsune/Documents/GitHub/GrubTrack/Server/Server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/joonohchun/.nuget/NuGet/NuGet.Config"
+        "/Users/hatsune/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
