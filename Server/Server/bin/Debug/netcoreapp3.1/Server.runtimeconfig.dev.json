@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/hatsune/.dotnet/store/|arch|/|tfm|",
+      "/Users/hatsune/.nuget/packages"
+    ]
+  }
+}

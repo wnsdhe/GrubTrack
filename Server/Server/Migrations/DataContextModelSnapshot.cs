@@ -246,6 +246,9 @@ namespace Server.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("UserIdentifierNum")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.ToTable("Transactions");
@@ -259,7 +262,8 @@ namespace Server.Migrations
                             Flag = true,
                             FoodWaste = true,
                             Pickup = true,
-                            Status = "temp"
+                            Status = "temp",
+                            UserIdentifierNum = new Guid("00000000-0000-0000-0000-000000000000")
                         });
                 });
 

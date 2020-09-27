@@ -12,6 +12,7 @@ using Server.Models.Context;
 
 namespace Server.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     public class TransactionsController : Controller
     {
@@ -41,20 +42,52 @@ namespace Server.Controllers
 
         // POST api/transactions
         [HttpPost]
-        public void Post([FromBody] string value)
+        // public async void Post([FromBody] Transactions transaction)
+        public async Task<ActionResult<Transactions>> Post([FromBody] Transactions transaction)
         {
+            transaction.Date = System.DateTime.Now;
+            _context.Transactions.Add(transaction);
+            await _context.SaveChangesAsync();
+            return Ok(transaction);
         }
 
         // PUT api/transactions/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult<Transactions>> Put(int id, [FromBody] Transactions transaction)
+        //public async void Put(DateTime dateTime, Boolean foodWaste, Boolean pickUp, int amountlbs, string status, Boolean flag)
         {
+            /* var transaction = new Transactions
+            {
+                Date = System.DateTime.Now,
+                FoodWaste = foodWaste,
+                Pickup = pickUp,
+                Amountlbs = amountlbs,
+                Status = status,
+                Flag = flag
+            }; */
+            var tr = await _context.Transactions.FindAsync(id);
+            //tr.Date = System.DateTime.Now;
+            tr.FoodWaste = transaction.FoodWaste;
+            tr.Pickup = transaction.Pickup;
+            tr.Amountlbs = transaction.Amountlbs;
+            tr.Status = transaction.Status;
+            tr.Flag = transaction.Flag;
+            tr.userID = transaction.userID;
+
+            //_context.Add(transaction);
+            await _context.SaveChangesAsync();
+            return Ok(tr);
         }
 
         // DELETE api/transactions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        //public async void Delete(int id)
+        public async Task<ActionResult<Transactions>> Delete(int id)
         {
+            var transaction = await _context.Transactions.FindAsync(id);
+            _context.Transactions.Remove(transaction);
+            await _context.SaveChangesAsync();
+            return Ok();
         }
     }
 }

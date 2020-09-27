@@ -60,6 +60,7 @@ namespace Server.BusinessLogic.User
                         Lname = user.lName,
                         Token = _jwtGenerator.CreateToken(user),
                         Username = user.UserName,
+                        ID = user.Id,
                         Image = null
                     };
                 }
