@@ -1,7 +1,7 @@
 import React from 'react';
 import { login } from '../services/posts';
 
-type statustype = { status: string, setStatus: any, his:any };
+type statustype = { status: string, setStatus: any, his: any };
 
 let UserForm = ({ status, setStatus, his }: statustype) => {
 
@@ -40,11 +40,14 @@ let UserForm = ({ status, setStatus, his }: statustype) => {
       }
       await login(userData, op).then(res => {
         if (res === "Wrong") {
-          document.getElementById('emailControl')!.innerHTML += '<p id="emailError" class="help is-danger">Wrong Email/Password</p>'
+          let error = document.getElementById("passwordError");
+          if (!error) {
+            document.getElementById('emailControl')!.innerHTML += '<p id="emailError" class="help is-danger">Wrong Email/Password</p>'
+          }        
         } else {
           his.push('/logged')
         }
-      })  
+      })
     }
   }
 
@@ -52,7 +55,7 @@ let UserForm = ({ status, setStatus, his }: statustype) => {
     switch (statu) {
       case 'login':
         return (
-          <form onSubmit={() => {}} id="userForm">
+          <form onSubmit={() => { }} id="userForm">
             <div className="field">
               <div id="emailControl" className="control">
                 <input required id="email" className="input is-rounded" type="email" placeholder="Email" autoFocus autoComplete="on"></input>
@@ -86,7 +89,7 @@ let UserForm = ({ status, setStatus, his }: statustype) => {
         );
       case 'register':
         return (
-          <form id="userForm" onSubmit={() => {}}>
+          <form id="userForm" onSubmit={() => { }}>
             <div className="field">
               <div className="control">
                 <input required id="email" className="input is-rounded" type="email" placeholder="Email" autoFocus autoComplete="on"></input>
@@ -109,7 +112,7 @@ let UserForm = ({ status, setStatus, his }: statustype) => {
 
             <br></br>
             <div className="buttons">
-              <button className="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth" onClick={() => {loginer("register")}}>Register</button>
+              <button className="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth" onClick={() => { loginer("register") }}>Register</button>
               <button className="regb button is-block is-danger is-outlined is-rounded is-medium column is-two-fifth" onClick={() => { setStatus("login") }}>Login</button>
             </div>
           </form>
