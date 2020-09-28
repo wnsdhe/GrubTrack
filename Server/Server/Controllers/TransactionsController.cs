@@ -26,33 +26,18 @@ namespace Server.Controllers
         // GET: api/transactions
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Transactions>>> Get([FromBody] Transactions transaction)
+        public async Task<ActionResult<IEnumerable<Transactions>>> Get()
         {
             var values = await _context.Transactions.ToListAsync();
-            List<Transactions> filteredValues = new List<Transactions>();
-            foreach (var val in values)
-            {
-                if (val.userID == transaction.userID)
-                {
-                    filteredValues.Add(val);
-                }
-            }
-            return Ok(filteredValues);
+            return Ok(values);
         }
 
         // GET api/transactions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Transactions>> Get(int id, [FromBody] Transactions transaction)
+        public async Task<ActionResult<Transactions>> Get(int id)
         {
             var value = await _context.Transactions.FindAsync(id);
-            if (value.userID == transaction.userID)
-            {
-                return Ok(value);
-            }
-            else
-            {
-                return Ok();
-            }
+            return Ok(value);
         }
 
         // POST api/transactions
