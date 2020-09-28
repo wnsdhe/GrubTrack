@@ -86,14 +86,22 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
 
   }
 
-  function checkPass(e:any) {
-    if (e.target.value.match("^(?=.*[a-z])(?=.*[A-Z])(?=.*)[a-zA-Z]{8,}$") === null) {
-      let error = document.getElementById("passwordError");
-      if (!error) {
-        document.getElementById('passwordControl')!.innerHTML += '<p id="passwordError" class="help is-danger">Password too easy!</p>'
+  function checkPass(e: any) {
+    if (e.target !== null) {
+      console.log(e.target.value)
+      if (e.target.value.match("(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$") === null) {
+        let error = document.getElementById("passwordError");
+        if (!error) {
+            document.getElementById('passwordControl')!.innerHTML += '<p id="passwordError" class="help is-danger">Password too easy! At least 8 characters with at least one upper case letter and one lower case letter</p>'        
+        } else {
+          error.remove();
+          document.getElementById('passwordControl')!.innerHTML += '<p id="passwordError" class="help is-danger">Password too easy! At least 8 characters with at least one upper case letter and one lower case letter</p>'
+        }
       } else {
-        error.remove();
-        document.getElementById('passwordControl')!.innerHTML += '<p id="passwordError" class="help is-danger">Password too easy!</p>'
+        let error = document.getElementById("passwordError");
+        if (error) {
+          error.remove();
+        }
       }
     }
   }
@@ -112,7 +120,7 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
             <a className="is-pulled-right mb-1" href="# " onClick={() => { setStatus("forget") }}>Forget Password?</a>
             <div className="field">
               <div id="passwordControl" className="control">
-                <input onChange={checkPass} required id="password" className="input is-rounded" type="password" placeholder="Password" autoComplete="on"></input>
+                <input onChange={(evt) => checkPass(evt)} required id="password" className="input is-rounded" type="password" placeholder="Password" autoComplete="on"></input>
               </div>
             </div>
             <br></br>
@@ -128,7 +136,7 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
 
             <br></br>
             <div className="buttons">
-              <button value="Submit" type="submit" className="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth" onClick={() => {}}>Login</button>
+              <button value="Submit" type="submit" className="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth" onClick={() => { }}>Login</button>
               <button className="regb button is-block is-danger is-outlined is-rounded is-medium column is-two-fifth" onClick={() => { setStatus("register") }}>Register</button>
             </div>
 
@@ -138,11 +146,11 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
         return (
           <form onSubmit={loginer} id="userForm">
             <div className="field">
-              <div className="control">
+              <div id="emailControl" className="control">
                 <input hidden autoComplete="false"></input>
-                <input required id="username" className="input is-rounded" type="text" placeholder="Username"  autoComplete="off"></input>
-                <input required id="fname" className="input is-rounded" type="text" placeholder="First Name"  autoComplete="off"></input>
-                <input required id="lname" className="input is-rounded" type="text" placeholder="Last Name"  autoComplete="off"></input>
+                <input required id="username" className="input is-rounded" type="text" placeholder="Username" autoComplete="off"></input>
+                <input required id="fname" className="input is-rounded" type="text" placeholder="First Name" autoComplete="off"></input>
+                <input required id="lname" className="input is-rounded" type="text" placeholder="Last Name" autoComplete="off"></input>
               </div>
 
             </div>
@@ -150,9 +158,9 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
             <a className="is-pulled-right mb-1" href="# " onClick={() => { setStatus("forget") }}>Forget Password?</a>
             <br></br>
             <div className="field">
-              <div className="control">
+              <div id="passwordControl" className="control">
                 <input required id="email" className="input is-rounded" type="email" placeholder="Email" autoFocus autoComplete="on"></input>
-                <input required id="password" className="input is-rounded" type="password" placeholder="Password" autoComplete="on"></input>
+                <input onChange={checkPass} required id="password" className="input is-rounded" type="password" placeholder="Password" autoComplete="on"></input>
               </div>
             </div>
             <br></br>
