@@ -51,7 +51,8 @@ let UserForm = ({ status, setStatus, his }: statustype) => {
             document.getElementById('emailControl')!.innerHTML += '<p id="emailError" class="help is-danger">Wrong Email/Password</p>'
           }        
         } else {
-          his.push('/logged')
+          let user = React.createContext(res)
+          his.push('/logged');
         }
       })
     }
