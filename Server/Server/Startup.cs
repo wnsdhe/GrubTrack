@@ -31,6 +31,7 @@ namespace Server
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -45,6 +46,16 @@ namespace Server
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("SqlConnection"));
             });
+            services.AddCors(options =>
+        {
+            options.AddPolicy(name: MyAllowSpecificOrigins,
+                              builder =>
+                              {
+                                  builder.WithOrigins("http://localhost:3000")
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod();
+                              });
+        });
             services.AddControllers(opt =>
             {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
@@ -90,7 +101,7 @@ namespace Server
             // app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors("CorsPolicy");
+            app.UseCors(MyAllowSpecificOrigins);
 
 
             app.UseAuthentication();

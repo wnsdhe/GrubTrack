@@ -34,7 +34,6 @@ let Header = ({ statu, setStatus }: status) => {
   })
 
   function switcher(sstatu: string) {
-    console.log(sstatu)
     switch (sstatu) {
       case 'login':
         return (

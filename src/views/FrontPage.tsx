@@ -1,9 +1,9 @@
 import React from "react";
 import UserForm from '../components/UserForm'
 
-type status = { statu: string, setStatus: any };
+type status = { statu: string, setStatus: any, his:any };
 
-export default function FrontPage({ statu, setStatus }: status) {
+export default function FrontPage({ statu, setStatus, his }: status) {
   return (
     <div className="hero-body">
       <div className="container is-fluid ">
@@ -22,7 +22,7 @@ export default function FrontPage({ statu, setStatus }: status) {
             <div className="box loginbox column is-three-fifths is-offset-one-fifth">
               <br></br>
               <div className="title is-size-1-widescreen 	 is-family-sans-serif">Welcome to GrubTrack!</div>
-              <UserForm status={statu} setStatus={setStatus}></UserForm>
+              <UserForm status={statu} setStatus={setStatus} his={his}></UserForm>
             </div>
           </div>
         </div>

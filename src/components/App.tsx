@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import { useState } from "react";
 
 import FrontPage from '../views/FrontPage'
@@ -10,6 +10,7 @@ import '../styles/main.scss';
 
 export default function App() {
   let [status, setStatus] = useState("login");
+  let history = useHistory();
 
   return (
       <Switch>
@@ -19,7 +20,7 @@ export default function App() {
             <Header statu="login" setStatus={setStatus}></Header>
           </div>
           <div className="line"></div>
-          <FrontPage statu={status} setStatus={setStatus} />
+          <FrontPage statu={status} setStatus={setStatus} his={history} />
           <br className="mb-2"></br>
           <div className="hero-foot">
             <Footer setStatus={setStatus}></Footer>
