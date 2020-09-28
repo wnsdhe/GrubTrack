@@ -86,6 +86,18 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
 
   }
 
+  function checkPass(e:any) {
+    if (e.target.value.match("^(?=.*[a-z])(?=.*[A-Z])(?=.*)[a-zA-Z]{8,}$") === null) {
+      let error = document.getElementById("passwordError");
+      if (!error) {
+        document.getElementById('passwordControl')!.innerHTML += '<p id="passwordError" class="help is-danger">Password too easy!</p>'
+      } else {
+        error.remove();
+        document.getElementById('passwordControl')!.innerHTML += '<p id="passwordError" class="help is-danger">Password too easy!</p>'
+      }
+    }
+  }
+
   function switcher(statu: string) {
     switch (statu) {
       case 'login':
@@ -100,7 +112,7 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
             <a className="is-pulled-right mb-1" href="# " onClick={() => { setStatus("forget") }}>Forget Password?</a>
             <div className="field">
               <div id="passwordControl" className="control">
-                <input required id="password" className="input is-rounded" type="password" placeholder="Password" autoComplete="on"></input>
+                <input onChange={checkPass} required id="password" className="input is-rounded" type="password" placeholder="Password" autoComplete="on"></input>
               </div>
             </div>
             <br></br>
@@ -124,7 +136,7 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
         );
       case 'register':
         return (
-          <form id="userForm">
+          <form onSubmit={loginer} id="userForm">
             <div className="field">
               <div className="control">
                 <input hidden autoComplete="false"></input>
@@ -152,7 +164,7 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
 
             <br></br>
             <div className="buttons">
-              <button type="button" className="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth" onClick={() => { loginer("register") }}>Register</button>
+              <button type="submit" className="loginb button is-block is-success is-outlined is-rounded is-medium column is-two-fifth" >Register</button>
               <button className="regb button is-block is-danger is-outlined is-rounded is-medium column is-two-fifth" onClick={() => { setStatus("login") }}>Login</button>
             </div>
           </form>
