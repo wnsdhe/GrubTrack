@@ -11,6 +11,7 @@ import '../styles/main.scss';
 export default function App() {
   let [status, setStatus] = useState("login");
   let history = useHistory();
+  let [user, setUser] = useState(null);
 
   return (
       <Switch>
@@ -20,7 +21,7 @@ export default function App() {
             <Header statu="login" setStatus={setStatus}></Header>
           </div>
           <div className="line"></div>
-          <FrontPage statu={status} setStatus={setStatus} his={history} />
+          <FrontPage statu={status} setStatus={setStatus} his={history} setUser={setUser}/>
           <br className="mb-2"></br>
           <div className="hero-foot">
             <Footer setStatus={setStatus}></Footer>
@@ -29,7 +30,7 @@ export default function App() {
         </Route>
         <Route path="/logged">
           <div className="line"></div>
-          <DashBoard setStatus={setStatus}/>
+          <DashBoard user={user} setStatus={setStatus}/>
         </Route>
       </Switch>
   )

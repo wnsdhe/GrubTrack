@@ -1,9 +1,9 @@
 import React from 'react';
 import { login } from '../services/posts';
 
-type statustype = { status: string, setStatus: any, his: any };
+type statustype = { status: string, setStatus: any, his: any, setUser:any };
 
-let UserForm = ({ status, setStatus, his }: statustype) => {
+let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
 
   function checker() {
     let email = document.getElementById("email");
@@ -51,7 +51,7 @@ let UserForm = ({ status, setStatus, his }: statustype) => {
             document.getElementById('emailControl')!.innerHTML += '<p id="emailError" class="help is-danger">Wrong Email/Password</p>'
           }        
         } else {
-          let user = React.createContext(res)
+          setUser(res)
           his.push('/logged');
         }
       })
