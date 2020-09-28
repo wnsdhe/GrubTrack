@@ -9,7 +9,10 @@ let UserForm = ({ status, setStatus, his }: statustype) => {
     let email = document.getElementById("email");
     let password = document.getElementById("password");
     if ((email as HTMLInputElement).value === "") {
-      document.getElementById('emailControl')!.innerHTML += '<p id="emailError" class="help is-danger">This field is required</p>'
+      let error = document.getElementById("emailError");
+      if (!error) {
+        document.getElementById('emailControl')!.innerHTML += '<p id="emailError" class="help is-danger">This field is required</p>'
+      }   
       return false;
     } else {
       let error = document.getElementById("emailError");
@@ -19,7 +22,10 @@ let UserForm = ({ status, setStatus, his }: statustype) => {
     }
 
     if ((password as HTMLInputElement).value === "") {
-      document.getElementById('passwordControl')!.innerHTML += '<p id="passwordError" class="help is-danger">This field is required</p>'
+      let error = document.getElementById("passwordError");
+      if (!error) {
+        document.getElementById('passwordControl')!.innerHTML += '<p id="passwordError" class="help is-danger">This field is required</p>'
+      }    
       return false;
     } else {
       let error = document.getElementById("passwordError");
@@ -40,7 +46,7 @@ let UserForm = ({ status, setStatus, his }: statustype) => {
       }
       await login(userData, op).then(res => {
         if (res === "Wrong") {
-          let error = document.getElementById("passwordError");
+          let error = document.getElementById("emailError");
           if (!error) {
             document.getElementById('emailControl')!.innerHTML += '<p id="emailError" class="help is-danger">Wrong Email/Password</p>'
           }        
