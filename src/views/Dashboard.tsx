@@ -4,9 +4,7 @@ import faker from "faker";
 import Sidebar from '../components/Sidebar'
 import Layout from './Layout'
 
-let name = faker.name.firstName()
 let avatar = faker.image.avatar()
-let title = faker.name.jobTitle()
 
 type status = { setStatus: any, user:any };
 
