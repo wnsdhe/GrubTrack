@@ -42,7 +42,7 @@ namespace Server.Controllers
 
         // GET api/transactions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Transactions>> Get(int id, Guid user_id)
+        public async Task<ActionResult<Transactions>> GetAll(int id, Guid user_id)
         {
             var value = await _context.Transactions.FindAsync(id);
             if (value.userID == user_id)
