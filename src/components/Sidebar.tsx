@@ -1,6 +1,12 @@
 import React from "react";
+import {
+  Link,
+  useRouteMatch,
+} from "react-router-dom";
+
 
 let Sidebar = (props:any) => {
+  let match = useRouteMatch();
 
   return (
     <div className="SidebarContainer box is-flex ">
@@ -46,12 +52,13 @@ let Sidebar = (props:any) => {
         <p className="menu-label">Main Menu</p>
         <ul className="menu-list">
           <li>
-            <a href="# " className="is-active">DashBoard</a>
+            <Link to={`${match.url}/menu`}>Dashboard</Link>
           </li>
           <li>
-            <a href="# ">
-              Report
-            </a>
+            <Link to={`${match.url}/transaction`}>Transaction</Link>
+          </li>
+          <li>
+              <Link to={`${match.url}/report`}>Report</Link>
             <ul>
               <li>
                 <a href="# ">View Your Report</a>

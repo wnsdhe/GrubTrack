@@ -73,7 +73,6 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
           if (res === "Wrong") {
             let error = document.getElementById("emailError");
             if (!error) {
-              console.log(res.errors)
               document.getElementById('emailControl')!.innerHTML += '<p id="emailError" class="help is-danger">Wrong Email/Password</p>'
             }
           } else {
@@ -88,7 +87,6 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
 
   function checkPass(e: any) {
     if (e.target !== null) {
-      console.log(e.target.value)
       if (e.target.value.match("(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$") === null) {
         let error = document.getElementById("passwordError");
         if (!error) {

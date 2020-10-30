@@ -30,7 +30,7 @@ export default function App() {
         </Route>
         <Route path="/logged">
           <div className="line"></div>
-          <DashBoard user={user} setStatus={setStatus}/>
+          <DashBoard user={user} setStatus={setStatus} his={history}/>
         </Route>
       </Switch>
   )
