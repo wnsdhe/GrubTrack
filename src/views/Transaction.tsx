@@ -5,11 +5,11 @@ import { useTable, useSortBy, usePagination, useFilters, useGlobalFilter, useAsy
 import { TransColumn } from '../models/States'
 import MaUTable from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
-import TablePagination from '@material-ui/core/TablePagination';
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import TableFooter from '@material-ui/core/TableFooter';
+import MuiTableFooter from '@material-ui/core/TableFooter';
+import TablePagination from '@material-ui/core/TablePagination';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -22,7 +22,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { transactions } from "../services/gets/index"
 import { DeleteTrans } from "../services/deletes/index"
 import { newTrans } from "../services/posts/index"
-import EditForm from "../components/EditForm"
+import EditForm from "../components/EditForm";
+import {matchSorter} from 'match-sorter'
 
 type Tdata = { setData: any, data: any, userInfo: any };
 type table = { columns: any, data: any, setData: any, diaOpen: any, userInfo: any, setEdit: any, editOpen: any };
@@ -121,8 +122,44 @@ async function newTransaction(setData: any, userInfo: any) {
   })
 }
 
+function fuzzyTextFilterFn(rows:any, id:any, filterValue:any) {
+
+  return matchSorter(rows, filterValue, { keys: [(row:any) => row.values[id]] })
+}
+
+// Let the table remove the filter if the string is empty
+fuzzyTextFilterFn.autoRemove = val => !val
+
 function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }: table) {
   // Use the state and functions returned from useTable to build your UI
+  const defaultColumn = React.useMemo(
+    () => ({
+      // Let's set up our default Filter UI
+      Filter: DefaultColumnFilter,
+    }),
+    []
+  )
+
+  const filterTypes = React.useMemo(
+    () => ({
+      // Add a new fuzzyTextFilterFn filter type.
+      fuzzyText: fuzzyTextFilterFn,
+      // Or, override the default text filter to use
+      // "startWith"
+      text: (rows, id, filterValue) => {
+        return rows.filter(row => {
+          const rowValue = row.values[id]
+          return rowValue !== undefined
+            ? String(rowValue)
+                .toLowerCase()
+                .startsWith(String(filterValue).toLowerCase())
+            : true
+        })
+      },
+    }),
+    []
+  )
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -140,13 +177,19 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
     nextPage,
     previousPage,
     setPageSize,
+    state,
+    visibleColumns,
+    preGlobalFilteredRows,
+    setGlobalFilter,
     state: { pageIndex, pageSize },
   } = useTable(
     {
       columns,
       data,
       initialState: { pageIndex: 0 },
-    },   
+      defaultColumn, // Be sure to pass the defaultColumn option
+      filterTypes,
+    },
     useFilters, // useFilters!
     useGlobalFilter, // useGlobalFilter!
     useSortBy,
@@ -155,7 +198,12 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
   // Render the UI for your table
   return (
     <div>
-      <div className="column is-italic is-family-monospace	has-text-weight-semibold is-size-2	">Transaction</div>
+      <div className="column is-italic is-family-monospace	has-text-weight-semibold is-size-2	">Transaction
+      <GlobalFilter
+          preGlobalFilteredRows={preGlobalFilteredRows}
+          globalFilter={state.globalFilter}
+          setGlobalFilter={setGlobalFilter}
+        /></div>
       <div className="columns ml-3">
         <div className=""><button className="button is-primary" onClick={diaOpen}>New Transaction</button></div>
         <div className=""><button className="button is-info ml-5" onClick={pdf}>Download PDF</button></div>
@@ -212,52 +260,54 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
             )
           })}
         </TableBody>
-        
-        <div className="pagination">
-        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {'<<'}
-        </button>{' '}
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          {'<'}
-        </button>{' '}
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-          {'>'}
-        </button>{' '}
-        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {'>>'}
-        </button>{' '}
-        <span>
-          Page{' '}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>{' '}
-        </span>
-        <span>
-          | Go to page:{' '}
-          <input
-            type="number"
-            defaultValue={pageIndex + 1}
-            onChange={e => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0
-              gotoPage(page)
-            }}
-            style={{ width: '100px' }}
-          />
-        </span>{' '}
-        <select
-          value={pageSize}
-          onChange={e => {
-            setPageSize(Number(e.target.value))
-          }}
-        >
-          {[10, 20, 30, 40, 50].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
+        <MuiTableFooter>
+          <div className="pagination">
+            <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+              {'<<'}
+            </button>{' '}
+            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+              {'<'}
+            </button>{' '}
+            <button onClick={() => nextPage()} disabled={!canNextPage}>
+              {'>'}
+            </button>{' '}
+            <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+              {'>>'}
+            </button>{' '}
+            <span>
+              Page{' '}
+              <strong>
+                {pageIndex + 1} of {pageOptions.length}
+              </strong>{' '}
+            </span>
+            <span>
+              | Go to page:{' '}
+              <input
+                type="number"
+                defaultValue={pageIndex + 1}
+                onChange={e => {
+                  const page = e.target.value ? Number(e.target.value) - 1 : 0
+                  gotoPage(page)
+                }}
+                style={{ width: '100px' }}
+              />
+            </span>{' '}
+            <select
+              value={pageSize}
+              onChange={e => {
+                setPageSize(Number(e.target.value))
+              }}
+            >
+              {[10, 20, 30, 40, 50].map(pageSize => (
+                <option key={pageSize} value={pageSize}>
+                  Show {pageSize}
+                </option>
+              ))}
+            </select>
+          </div>
+        </MuiTableFooter>
       </MaUTable>
+
     </div>
   )
 }
