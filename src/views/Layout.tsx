@@ -13,13 +13,13 @@ export default function Layout({ setStatus, userInfo}: status) {
   let [res, SetRes] = useState(null);
   let [repos, SetRepos] = useState(null);
   useEffect(() => {
-    transactions().then(rest => {
+    transactions(userInfo['id']).then(rest => {
       SetRes(rest)
     })
     reports().then(rest => {
       SetRepos(rest)
     })
-  },[])
+  },[userInfo])
   return (
     <div className="hero">
       <div className="hero-head">

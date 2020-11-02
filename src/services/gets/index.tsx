@@ -1,7 +1,7 @@
 let url = 'http://localhost:5000/api'
 
-export function transactions() {
-    return fetch(url + "/transactions/", {
+export function transactions(a: any) {
+    return fetch(url + "/transactions?user_id=" + a , {
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',

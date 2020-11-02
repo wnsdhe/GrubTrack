@@ -12,3 +12,16 @@ export async function login(e: any, option: string) {
         return "Wrong";
     })
 }
+
+export async function newTrans(e: any) {
+    return await fetch(url + "/transactions/", {
+        method: 'POST',
+        body: JSON.stringify(e),
+        headers: new Headers({
+            'Content-Type': 'application/json',
+        }),
+    }).then(res => res.json()
+    ).catch(error => {
+        return "Wrong";
+    })
+}
