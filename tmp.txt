@@ -1,0 +1,36 @@
+         <div className="column">
+              <span>
+                Page{' '}
+                <strong>
+                  {pageIndex + 1} of {pageOptions.length}
+                </strong>{' '}
+              </span>
+            </div>
+            <div className="column is-inline">
+              <span className="has-text-centered">
+                | Go to page:{' '}
+                <input className="input"
+                  type="number"
+                  defaultValue={pageIndex + 1}
+                  onChange={e => {
+                    const page = e.target.value ? Number(e.target.value) - 1 : 0
+                    gotoPage(page)
+                  }}
+                  style={{ width: '100px' }}
+                />
+              </span>{' '}
+            </div>
+            <div className="column">
+              <select className="select"
+                value={pageSize}
+                onChange={e => {
+                  setPageSize(Number(e.target.value))
+                }}
+              >
+                {[10, 20, 30, 40, 50].map(pageSize => (
+                  <option key={pageSize} value={pageSize}>
+                    Show {pageSize}
+                  </option>
+                ))}
+              </select>
+            </div>

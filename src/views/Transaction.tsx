@@ -23,7 +23,7 @@ import { transactions } from "../services/gets/index"
 import { DeleteTrans } from "../services/deletes/index"
 import { newTrans } from "../services/posts/index"
 import EditForm from "../components/EditForm";
-import {matchSorter} from 'match-sorter'
+import { matchSorter } from 'match-sorter'
 
 type Tdata = { setData: any, data: any, userInfo: any };
 type table = { columns: any, data: any, setData: any, diaOpen: any, userInfo: any, setEdit: any, editOpen: any };
@@ -41,9 +41,9 @@ function GlobalFilter({
   }, 200)
 
   return (
-    <span>
+    <span className="ml-5">
       Search:{' '}
-      <input
+      <input className="input is-primary is-rounded is-medium"
         value={value || ""}
         onChange={e => {
           setValue(e.target.value);
@@ -122,9 +122,9 @@ async function newTransaction(setData: any, userInfo: any) {
   })
 }
 
-function fuzzyTextFilterFn(rows:any, id:any, filterValue:any) {
+function fuzzyTextFilterFn(rows: any, id: any, filterValue: any) {
 
-  return matchSorter(rows, filterValue, { keys: [(row:any) => row.values[id]] })
+  return matchSorter(rows, filterValue, { keys: [(row: any) => row.values[id]] })
 }
 
 // Let the table remove the filter if the string is empty
@@ -151,8 +151,8 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
           const rowValue = row.values[id]
           return rowValue !== undefined
             ? String(rowValue)
-                .toLowerCase()
-                .startsWith(String(filterValue).toLowerCase())
+              .toLowerCase()
+              .startsWith(String(filterValue).toLowerCase())
             : true
         })
       },
@@ -205,8 +205,8 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
           setGlobalFilter={setGlobalFilter}
         /></div>
       <div className="columns ml-3">
-        <div className=""><button className="button is-primary" onClick={diaOpen}>New Transaction</button></div>
-        <div className=""><button className="button is-info ml-5" onClick={pdf}>Download PDF</button></div>
+        <div className=""><button className="button is-primary is-rounded" onClick={diaOpen}>New Transaction</button></div>
+        <div className=""><button className="button is-info ml-5 is-rounded" onClick={pdf}>Download PDF</button></div>
       </div>
       <MaUTable id="TransactionTable" {...getTableProps()}>
         <TableHead>
@@ -243,14 +243,14 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
                   )
                 })}
                 <TableCell>
-                  <button className="button is-info" onClick={() => CellEdit(data, row, setData, userInfo, setEdit, editOpen)}>
-                    <span className="icon is-large is-outlined">
+                  <button className="button is-info is-rounded" onClick={() => CellEdit(data, row, setData, userInfo, setEdit, editOpen)}>
+                    <span className="icon is-large is-outlined ">
                       <i className="far fa-lg fa-edit"></i>
                     </span>
                   </button>
                 </TableCell>
                 <TableCell>
-                  <button className="button is-danger" onClick={() => CellDelete(data, row, setData, userInfo)}>
+                  <button className="button is-danger is-rounded" onClick={() => CellDelete(data, row, setData, userInfo)}>
                     <span className="icon is-large is-outlined">
                       <i className="far fa-lg fa-trash-alt"></i>
                     </span>
@@ -260,54 +260,35 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
             )
           })}
         </TableBody>
-        <MuiTableFooter>
-          <div className="pagination">
-            <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-              {'<<'}
-            </button>{' '}
-            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-              {'<'}
-            </button>{' '}
-            <button onClick={() => nextPage()} disabled={!canNextPage}>
-              {'>'}
-            </button>{' '}
-            <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-              {'>>'}
-            </button>{' '}
-            <span>
-              Page{' '}
-              <strong>
-                {pageIndex + 1} of {pageOptions.length}
-              </strong>{' '}
-            </span>
-            <span>
-              | Go to page:{' '}
-              <input
-                type="number"
-                defaultValue={pageIndex + 1}
-                onChange={e => {
-                  const page = e.target.value ? Number(e.target.value) - 1 : 0
-                  gotoPage(page)
-                }}
-                style={{ width: '100px' }}
-              />
-            </span>{' '}
-            <select
-              value={pageSize}
-              onChange={e => {
-                setPageSize(Number(e.target.value))
-              }}
-            >
-              {[10, 20, 30, 40, 50].map(pageSize => (
-                <option key={pageSize} value={pageSize}>
-                  Show {pageSize}
-                </option>
-              ))}
-            </select>
-          </div>
-        </MuiTableFooter>
       </MaUTable>
-
+      <nav className="pagination is-centered" role="navigation" aria-label="pagination">
+          <button className="pagination-previous" onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
+          <button className="pagination-next" onClick={() => nextPage()} disabled={!canNextPage}>Next page</button>
+          <ul className="pagination-list">
+            <li>
+            <button className="pagination-link" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                {'<<'}
+              </button>
+            </li>
+            <li><span className="pagination-ellipsis">&hellip;</span></li>
+            <li>
+            <button className="pagination-link" onClick={() => previousPage()} disabled={!canPreviousPage}>
+                {'<'}
+              </button>
+            </li>
+            <li>
+            <button className="pagination-link" onClick={() => nextPage()} disabled={!canNextPage}>
+                {'>'}
+              </button>
+            </li>
+            <li><span className="pagination-ellipsis">&hellip;</span></li>
+            <li>
+            <button className="pagination-link" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                {'>>'}
+              </button>
+            </li>
+          </ul>
+          </nav>
     </div>
   )
 }
