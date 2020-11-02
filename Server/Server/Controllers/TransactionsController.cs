@@ -58,16 +58,12 @@ namespace Server.Controllers
         // POST api/transactions
         [HttpPost]
         // public async void Post([FromBody] Transactions transaction)
-        public async Task<ActionResult<Transactions>> Post(Guid user_id, [FromBody] Transactions transaction)
+        public async Task<ActionResult<Transactions>> Post([FromBody] Transactions transaction)
         {
-            if (transaction.userID == user_id)
-            {
-                transaction.Date = System.DateTime.Now;
-                _context.Transactions.Add(transaction);
-                await _context.SaveChangesAsync();
-                return Ok(transaction);
-            }
-            return Ok();
+            transaction.Date = System.DateTime.Now;
+            _context.Transactions.Add(transaction);
+            await _context.SaveChangesAsync();
+            return Ok(transaction);
         }
 
         // PUT api/transactions/5
