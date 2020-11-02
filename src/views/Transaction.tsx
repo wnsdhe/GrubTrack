@@ -18,15 +18,16 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { transactions } from "../services/deletes/index"
+import {transactions} from "../services/gets/index"
+import { DeleteTrans } from "../services/deletes/index"
 import { newTrans } from "../services/posts/index"
 
-type Tdata = { setData: any, data: any };
+type Tdata = { setData: any, data: any, userInfo: any };
 type table = { columns: any, data: any, setData: any, diaOpen: any };
 type js = { js: any }
 
 function CellDelete(data: any, rowIndex: any, setData: any) {
-  transactions(rowIndex).then()
+  DeleteTrans(rowIndex).then()
 }
 
 function CellEdit(data: any, rowIndex: any, setData: any) {
@@ -39,7 +40,7 @@ function pdf() {
   doc.save('output.pdf')
 }
 
-async function newTransaction() {
+async function newTransaction(setData: any, userInfo:any) {
   let transData =
   {
     "userid": (document.getElementById("ID") as HTMLInputElement).value,
@@ -51,7 +52,9 @@ async function newTransaction() {
   }
   console.log(transData)
   await newTrans(transData).then(res => {
-    console.log(res)
+  })
+  transactions(userInfo['id']).then(rest => {
+    setData(rest)
   })
 }
 
@@ -152,7 +155,7 @@ function Table({ columns, data, setData, diaOpen }: table) {
   )
 }
 
-export default function Transaction({ setData, data }: Tdata) {
+export default function Transaction({ setData, data, userInfo }: Tdata) {
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -229,7 +232,7 @@ export default function Transaction({ setData, data }: Tdata) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={newTransaction} color="primary">
+          <Button onClick={() => newTransaction(setData, userInfo)} color="primary">
             Subscribe
           </Button>
         </DialogActions>

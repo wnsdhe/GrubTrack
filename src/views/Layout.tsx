@@ -32,10 +32,10 @@ export default function Layout({ setStatus, userInfo}: status) {
           <Menu></Menu>
         </Route>
         <Route path={`${match.url}/transaction`}>
-          <Transaction data={res} setData={SetRes}></Transaction>
+          <Transaction data={res} setData={SetRes} userInfo={userInfo}></Transaction>
         </Route>
         <Route path={`${match.url}/report`}>
-          <Transaction data={repos} setData={SetRes}></Transaction>
+          <Transaction data={repos} setData={SetRes} userInfo={userInfo}></Transaction>
         </Route>
       </Switch>  
       </div> 

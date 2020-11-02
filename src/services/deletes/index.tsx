@@ -1,6 +1,6 @@
 let url = 'http://localhost:5000/api'
 
-export function transactions(transID: any) {
+export function DeleteTrans(transID: any) {
     return fetch(url + "/transactions/" + transID, {
         method: 'DELETE',
         headers: new Headers({
