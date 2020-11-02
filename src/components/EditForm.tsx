@@ -43,7 +43,6 @@ let EditForm = (props: any) => {
           <FormControlLabel
             control={
               <Checkbox
-                defaultChecked
                 id="EFoodWaste"
                 color="default"
                 checked={props.data.foodWaste}
@@ -55,7 +54,6 @@ let EditForm = (props: any) => {
           <FormControlLabel
             control={
               <Checkbox
-                defaultChecked
                 id="EPickup"
                 color="default"
                 checked={props.data.pickup}
@@ -67,7 +65,6 @@ let EditForm = (props: any) => {
           <FormControlLabel
             control={
               <Checkbox
-                defaultChecked
                 id="EFlag"
                 color="default"
                 checked={props.data.flag}
@@ -77,6 +74,7 @@ let EditForm = (props: any) => {
             label="Flag"
           />
           <TextField
+            required  
             margin="dense"
             id="EID"
             label="UserID"
@@ -85,6 +83,7 @@ let EditForm = (props: any) => {
             fullWidth
           />
           <TextField
+            required
             margin="dense"
             id="Eid"
             label="ID"
@@ -93,6 +92,7 @@ let EditForm = (props: any) => {
             fullWidth
           />
           <TextField
+            required
             margin="dense"
             id="EAmountlbs"
             label="Amount(lbs)"
@@ -101,6 +101,7 @@ let EditForm = (props: any) => {
             fullWidth
           />
           <TextField
+            required
             margin="dense"
             id="EStatus"
             label="Status"
