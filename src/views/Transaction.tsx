@@ -115,7 +115,7 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
           {headerGroups.map(headerGroup => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <TableCell {...column.getHeaderProps()}>
+                <TableCell {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
                   <span>
                     {column.isSorted
