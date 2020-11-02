@@ -1,7 +1,7 @@
 let url = 'http://localhost:5000/api'
 
-export async function newTrans(e: any, id: any) {
-    return await fetch(url + "/transactions/" + id, {
+export async function EditTrans(e: any, id:any, userid: any) {
+    return await fetch(url + "/transactions/" + id + "?user_id=" + userid, {
         method: 'PUT',
         body: JSON.stringify(e),
         headers: new Headers({

@@ -18,15 +18,16 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {transactions} from "../services/gets/index"
+import { transactions } from "../services/gets/index"
 import { DeleteTrans } from "../services/deletes/index"
 import { newTrans } from "../services/posts/index"
+import EditForm from "../components/EditForm"
 
 type Tdata = { setData: any, data: any, userInfo: any };
-type table = { columns: any, data: any, setData: any, diaOpen: any, userInfo: any };
+type table = { columns: any, data: any, setData: any, diaOpen: any, userInfo: any, setEdit: any, editOpen: any };
 type js = { js: any }
 
-async function CellDelete(data: any, row: any, setData: any, userInfo:any) {
+async function CellDelete(data: any, row: any, setData: any, userInfo: any) {
   /*DeleteTrans(rowIndex).then()*/
   let selected = row.cells[0].value;
   await DeleteTrans(userInfo['id'], selected)
@@ -35,8 +36,17 @@ async function CellDelete(data: any, row: any, setData: any, userInfo:any) {
   })
 }
 
-function CellEdit(data: any, rowIndex: any, setData: any) {
-
+function CellEdit(data: any, row: any, setData: any, userInfo: any, setEdit: any, editOpen: any) {
+  setEdit({
+    "id": row.cells[0].value,
+    "userid": row.cells[1].value,
+    "foodWaste": row.cells[3].checked,
+    "pickup": row.cells[4].checked,
+    "amountlbs": row.cells[5].value,
+    "status": row.cells[6].value,
+    "flag": row.cells[7].checked
+  })
+  editOpen()
 }
 
 function pdf() {
@@ -45,7 +55,7 @@ function pdf() {
   doc.save('output.pdf')
 }
 
-async function newTransaction(setData: any, userInfo:any) {
+async function newTransaction(setData: any, userInfo: any) {
   let transData =
   {
     "userid": (document.getElementById("ID") as HTMLInputElement).value,
@@ -63,7 +73,7 @@ async function newTransaction(setData: any, userInfo:any) {
   })
 }
 
-function Table({ columns, data, setData, diaOpen, userInfo }: table) {
+function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }: table) {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -135,7 +145,7 @@ function Table({ columns, data, setData, diaOpen, userInfo }: table) {
                   )
                 })}
                 <TableCell>
-                  <button className="button is-info" onClick={() => CellEdit(data, row, setData)}>
+                  <button className="button is-info" onClick={() => CellEdit(data, row, setData, userInfo, setEdit, editOpen)}>
                     <span className="icon is-large is-outlined">
                       <i className="far fa-lg fa-edit"></i>
                     </span>
@@ -159,16 +169,28 @@ function Table({ columns, data, setData, diaOpen, userInfo }: table) {
 
 export default function Transaction({ setData, data, userInfo }: Tdata) {
   const [open, setOpen] = React.useState(false);
+  const [edit, setEdit] = React.useState(false);
+  let [editData, setEditData] = React.useState({});
+
   const handleClickOpen = () => {
     setOpen(true);
+  };
+
+  const handleEditOpen = () => {
+    setEdit(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleEditClose = () => {
+    setEdit(false);
+  };
+
   return (
     <div>
-      <Table columns={TransColumn} data={data} setData={setData} diaOpen={handleClickOpen} userInfo={userInfo} />
+      <Table columns={TransColumn} data={data} setData={setData} diaOpen={handleClickOpen} userInfo={userInfo} setEdit={setEditData} editOpen={handleEditOpen} />
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Add New Transaction</DialogTitle>
         <DialogContent>
@@ -211,7 +233,8 @@ export default function Transaction({ setData, data, userInfo }: Tdata) {
           <TextField
             margin="dense"
             id="ID"
-            label="ID"
+            label="UserID"
+            value={userInfo['id']}
             type="text"
             fullWidth
           />
@@ -235,10 +258,11 @@ export default function Transaction({ setData, data, userInfo }: Tdata) {
             Cancel
           </Button>
           <Button onClick={() => newTransaction(setData, userInfo)} color="primary">
-            Subscribe
+            Submit
           </Button>
         </DialogActions>
       </Dialog>
+      <EditForm edit={edit} handleEditClose={handleEditClose} data={editData} userInfo={userInfo} setData={setData}></EditForm>
     </div>
   );
 };
