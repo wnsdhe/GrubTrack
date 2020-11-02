@@ -1,7 +1,7 @@
 import React from "react";
 import jsPDF from 'jspdf'
 import 'jspdf-autotable'
-import { useTable, useSortBy, usePagination } from 'react-table'
+import { useTable, useSortBy, usePagination, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table'
 import { TransColumn } from '../models/States'
 import MaUTable from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -9,6 +9,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import TableFooter from '@material-ui/core/TableFooter';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -25,7 +26,54 @@ import EditForm from "../components/EditForm"
 
 type Tdata = { setData: any, data: any, userInfo: any };
 type table = { columns: any, data: any, setData: any, diaOpen: any, userInfo: any, setEdit: any, editOpen: any };
-type js = { js: any }
+
+// Define a default UI for filtering
+function GlobalFilter({
+  preGlobalFilteredRows,
+  globalFilter,
+  setGlobalFilter,
+}) {
+  const count = preGlobalFilteredRows.length
+  const [value, setValue] = React.useState(globalFilter)
+  const onChange = useAsyncDebounce(value => {
+    setGlobalFilter(value || undefined)
+  }, 200)
+
+  return (
+    <span>
+      Search:{' '}
+      <input
+        value={value || ""}
+        onChange={e => {
+          setValue(e.target.value);
+          onChange(e.target.value);
+        }}
+        placeholder={`${count} records...`}
+        style={{
+          fontSize: '1.1rem',
+          border: '0',
+        }}
+      />
+    </span>
+  )
+}
+
+// Define a default UI for filtering
+function DefaultColumnFilter({
+  column: { filterValue, preFilteredRows, setFilter },
+}) {
+  const count = preFilteredRows.length
+
+  return (
+    <input
+      value={filterValue || ''}
+      onChange={e => {
+        setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
+      }}
+      placeholder={`Search ${count} records...`}
+    />
+  )
+}
 
 async function CellDelete(data: any, row: any, setData: any, userInfo: any) {
   /*DeleteTrans(rowIndex).then()*/
@@ -98,7 +146,9 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
       columns,
       data,
       initialState: { pageIndex: 0 },
-    },
+    },   
+    useFilters, // useFilters!
+    useGlobalFilter, // useGlobalFilter!
     useSortBy,
     usePagination
   )
@@ -162,6 +212,51 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
             )
           })}
         </TableBody>
+        
+        <div className="pagination">
+        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          {'<<'}
+        </button>{' '}
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+          {'<'}
+        </button>{' '}
+        <button onClick={() => nextPage()} disabled={!canNextPage}>
+          {'>'}
+        </button>{' '}
+        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+          {'>>'}
+        </button>{' '}
+        <span>
+          Page{' '}
+          <strong>
+            {pageIndex + 1} of {pageOptions.length}
+          </strong>{' '}
+        </span>
+        <span>
+          | Go to page:{' '}
+          <input
+            type="number"
+            defaultValue={pageIndex + 1}
+            onChange={e => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0
+              gotoPage(page)
+            }}
+            style={{ width: '100px' }}
+          />
+        </span>{' '}
+        <select
+          value={pageSize}
+          onChange={e => {
+            setPageSize(Number(e.target.value))
+          }}
+        >
+          {[10, 20, 30, 40, 50].map(pageSize => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
+      </div>
       </MaUTable>
     </div>
   )
