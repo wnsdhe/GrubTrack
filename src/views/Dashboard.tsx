@@ -19,7 +19,7 @@ export default function Dashboard({ setStatus, user, his }: status) {
               hist={his}/>
           </div>
           <div className="column">
-            <Layout setStatus={setStatus}></Layout>
+            <Layout setStatus={setStatus} userInfo={user}></Layout>
           </div>
         </div>
       </div>

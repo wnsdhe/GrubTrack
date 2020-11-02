@@ -4,16 +4,20 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import Header from '../components/Header'
 import Transaction from './Transaction'
 import Menu from './Menu'
-import {transactions} from "../services/gets/index"
+import {transactions, reports} from "../services/gets/index"
 
-type status = { setStatus: any};
+type status = { setStatus: any, userInfo: any};
 
-export default function Layout({ setStatus}: status) {
+export default function Layout({ setStatus, userInfo}: status) {
   let match = useRouteMatch();
   let [res, SetRes] = useState(null);
+  let [repos, SetRepos] = useState(null);
   useEffect(() => {
-    transactions().then(res => {
-      SetRes(res)
+    transactions().then(rest => {
+      SetRes(rest)
+    })
+    reports().then(rest => {
+      SetRepos(rest)
     })
   },[])
   return (
@@ -28,10 +32,10 @@ export default function Layout({ setStatus}: status) {
           <Menu></Menu>
         </Route>
         <Route path={`${match.url}/transaction`}>
-          <Transaction data={res}></Transaction>
+          <Transaction data={res} setData={SetRes}></Transaction>
         </Route>
         <Route path={`${match.url}/report`}>
-          <Transaction data={res}></Transaction>
+          <Transaction data={repos} setData={SetRes}></Transaction>
         </Route>
       </Switch>  
       </div> 
