@@ -23,11 +23,16 @@ import { DeleteTrans } from "../services/deletes/index"
 import { newTrans } from "../services/posts/index"
 
 type Tdata = { setData: any, data: any, userInfo: any };
-type table = { columns: any, data: any, setData: any, diaOpen: any };
+type table = { columns: any, data: any, setData: any, diaOpen: any, userInfo: any };
 type js = { js: any }
 
-function CellDelete(data: any, rowIndex: any, setData: any) {
-  DeleteTrans(rowIndex).then()
+async function CellDelete(data: any, row: any, setData: any, userInfo:any) {
+  /*DeleteTrans(rowIndex).then()*/
+  let selected = row.cells[0].value;
+  await DeleteTrans(userInfo['id'], selected)
+  transactions(userInfo['id']).then(rest => {
+    setData(rest)
+  })
 }
 
 function CellEdit(data: any, rowIndex: any, setData: any) {
@@ -58,8 +63,7 @@ async function newTransaction(setData: any, userInfo:any) {
   })
 }
 
-function Table({ columns, data, setData, diaOpen }: table) {
-  console.log(data)
+function Table({ columns, data, setData, diaOpen, userInfo }: table) {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -88,7 +92,6 @@ function Table({ columns, data, setData, diaOpen }: table) {
     useSortBy,
     usePagination
   )
-  console.log(page)
   // Render the UI for your table
   return (
     <div>
@@ -125,7 +128,6 @@ function Table({ columns, data, setData, diaOpen }: table) {
             return (
               <TableRow {...row.getRowProps()}>
                 {row.cells.map(cell => {
-                  console.log(cell.value)
                   return (
                     <TableCell {...cell.getCellProps()}>
                       {cell.render('Cell')}
@@ -133,14 +135,14 @@ function Table({ columns, data, setData, diaOpen }: table) {
                   )
                 })}
                 <TableCell>
-                  <button className="button is-info" onClick={() => CellEdit(data, row.index, setData)}>
+                  <button className="button is-info" onClick={() => CellEdit(data, row, setData)}>
                     <span className="icon is-large is-outlined">
                       <i className="far fa-lg fa-edit"></i>
                     </span>
                   </button>
                 </TableCell>
                 <TableCell>
-                  <button className="button is-danger" onClick={() => CellDelete(data, row.index, setData)}>
+                  <button className="button is-danger" onClick={() => CellDelete(data, row, setData, userInfo)}>
                     <span className="icon is-large is-outlined">
                       <i className="far fa-lg fa-trash-alt"></i>
                     </span>
@@ -166,7 +168,7 @@ export default function Transaction({ setData, data, userInfo }: Tdata) {
   };
   return (
     <div>
-      <Table columns={TransColumn} data={data} setData={setData} diaOpen={handleClickOpen} />
+      <Table columns={TransColumn} data={data} setData={setData} diaOpen={handleClickOpen} userInfo={userInfo} />
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Add New Transaction</DialogTitle>
         <DialogContent>
