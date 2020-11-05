@@ -11,7 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {EditTrans} from '../services/puts/index'
 import { transactions } from "../services/gets/index"
 
-async function editor(setData: any) {
+async function editor(setData: any, close: any) {
   let transData =
   {
     "id": Number((document.getElementById("Eid") as HTMLInputElement).value),
@@ -28,6 +28,7 @@ async function editor(setData: any) {
   transactions(user).then(rest => {
     setData(rest)
   })
+  close()
 }
 
 let EditForm = (props: any) => {
@@ -114,7 +115,7 @@ let EditForm = (props: any) => {
           <Button onClick={props.handleEditClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={() => editor(props.setData)} color="primary">
+          <Button onClick={() => editor(props.setData, props.handleEditClose)} color="primary">
             Edit
           </Button>
         </DialogActions>
