@@ -23,6 +23,7 @@ namespace Server.BusinessLogic.User
             public string Username { get; set; }
             public string Email { get; set; }
             public string Password { get; set; }
+            public Boolean UserAdmin { get; set; }
 
         }
 
@@ -68,7 +69,8 @@ namespace Server.BusinessLogic.User
                     fName = request.Fname,
                     lName = request.Lname,
                     Email = request.Email,
-                    UserName = request.Username
+                    UserName = request.Username,
+                    userAdmin = request.UserAdmin
                 };
 
                 var result = await _userManager.CreateAsync(user, request.Password);
@@ -79,6 +81,7 @@ namespace Server.BusinessLogic.User
                         Fname = user.fName,
                         Lname = user.lName,
                         Username = user.UserName,
+                        UserAdmin = user.userAdmin,
                         Token = _jwtGenerator.CreateToken(user),
                         ID = user.Id,
                         Image = null

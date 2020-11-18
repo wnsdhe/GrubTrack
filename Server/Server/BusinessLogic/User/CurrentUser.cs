@@ -37,7 +37,8 @@ namespace Server.BusinessLogic.User
                     Username = user.UserName,
                     Token = _jwtGenerator.CreateToken(user),
                     ID = user.Id,
-                    Image = null
+                    Image = null,
+                    UserAdmin = user.userAdmin
                 };
             }
         }

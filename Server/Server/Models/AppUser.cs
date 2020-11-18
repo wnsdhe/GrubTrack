@@ -7,5 +7,6 @@ namespace Server.Models
     {
         public string fName { get; set; }
         public string lName { get; set; }
+        public Boolean userAdmin { get; set; }
     }
 }

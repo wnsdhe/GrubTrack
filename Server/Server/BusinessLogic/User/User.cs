@@ -9,5 +9,6 @@ namespace Server.BusinessLogic.User
         public string Username { get; set; }
         public string Image { get; set; }
         public string ID { get; set; }
+        public Boolean UserAdmin { get; set; }
     }
 }
