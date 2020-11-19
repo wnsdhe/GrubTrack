@@ -32,7 +32,6 @@ async function editor(setData: any, close: any) {
 }
 
 let EditForm = (props: any) => {
-  
   return (
     <div>
       <Dialog open={props.edit} onClose={props.handleEditClose} aria-labelledby="form-dialog-title">
@@ -89,7 +88,7 @@ let EditForm = (props: any) => {
             id="Eid"
             label="ID"
             type="text"
-            placeholder={props.data.id}
+            defaultValue={props.data.id}
             fullWidth
           />
           <TextField
@@ -98,7 +97,7 @@ let EditForm = (props: any) => {
             id="EAmountlbs"
             label="Amount(lbs)"
             type="number"
-            placeholder={props.data.amountlbs}
+            defaultValue={props.data.amountlbs}
             fullWidth
           />
           <TextField
@@ -107,7 +106,7 @@ let EditForm = (props: any) => {
             id="EStatus"
             label="Status"
             type="text"
-            placeholder={props.data.status}
+            defaultValue={props.data.status}
             fullWidth
           />
         </DialogContent>
