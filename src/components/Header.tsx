@@ -61,7 +61,7 @@ let Header = ({ statu, setStatus }: status) => {
             <a className="navbar-item" onClick={() => {window.open("https://www.wundergrubs.com/store/c1/Featured_Products.html")}}>
               Shop
                 </a>
-            <Link className="navbar-item is-active" href="# " onClick={() => { setStatus("login") }} to="/">
+            <Link className="navbar-item is-active mr-3" href="# " onClick={() => { setStatus("login") }} to="/">
               <span>Logout</span>
             </Link>
           </div>

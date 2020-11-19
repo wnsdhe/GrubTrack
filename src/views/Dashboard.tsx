@@ -10,9 +10,9 @@ type status = { setStatus: any, user:any, his:any };
 export default function Dashboard({ setStatus, user, his }: status) {
 
   return (
-      <div className="container is-fluid box">
+      <div className="home container is-fluid box">
         <div className="columns">
-          <div className="column is-one-fifth">
+          <div className="side column is-one-fifth">
             <Sidebar username={user['username']}
               avatar={avatar}
               jobtitle= {user['id']}
