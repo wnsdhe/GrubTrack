@@ -104,10 +104,15 @@ function pdf() {
   doc.save('output.pdf')
 }
 
-function convertToCSV(objArray) {
+function convertToCSV(columns,objArray) {
   var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
   var str = '';
-
+  var line = '';
+  for (var x = 0; x < columns.length; x++){
+      if (line != '') line += ','
+      line += columns[x];
+  }
+  str += line +'\r\n'
   for (var i = 0; i < array.length; i++) {
       var line = '';
       for (var index in array[i]) {
@@ -227,7 +232,8 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
         <div className=""><button className="button is-primary is-rounded" onClick={diaOpen}>New Transaction</button></div>
         <div className=""><button className="button is-info ml-5 is-rounded" onClick={pdf}>Download PDF</button></div>
         <div className=""><button className="button is-info ml-5 is-rounded" onClick={() => {
-            let csvstr = convertToCSV(data)
+            let cs = ["ID","userID","Date","FoodWaste","Pickup","Amount(lbs)","status","flag"]
+            let csvstr = convertToCSV(cs,data)
             var hiddenElement = document.createElement('a');
             hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvstr);
             hiddenElement.target = '_blank';
