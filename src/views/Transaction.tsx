@@ -104,6 +104,24 @@ function pdf() {
   doc.save('output.pdf')
 }
 
+function convertToCSV(objArray) {
+  var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+  var str = '';
+
+  for (var i = 0; i < array.length; i++) {
+      var line = '';
+      for (var index in array[i]) {
+          if (line != '') line += ','
+
+          line += array[i][index];
+      }
+
+      str += line + '\r\n';
+  }
+
+  return str;
+}
+
 async function newTransaction(setData: any, userInfo: any, close: any) {
   let transData =
   {
@@ -208,6 +226,14 @@ function Table({ columns, data, setData, diaOpen, userInfo, setEdit, editOpen }:
       <div className="columns ml-3">
         <div className=""><button className="button is-primary is-rounded" onClick={diaOpen}>New Transaction</button></div>
         <div className=""><button className="button is-info ml-5 is-rounded" onClick={pdf}>Download PDF</button></div>
+        <div className=""><button className="button is-info ml-5 is-rounded" onClick={() => {
+            let csvstr = convertToCSV(data)
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvstr);
+            hiddenElement.target = '_blank';
+            hiddenElement.download = 'transaction.csv';
+            hiddenElement.click();
+        }}>Download CSV</button></div>
       </div>
       <MaUTable id="TransactionTable" {...getTableProps()}>
         <TableHead>
