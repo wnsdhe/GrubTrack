@@ -38,10 +38,10 @@ let Header = ({ statu, setStatus }: status) => {
       case 'login':
         return (
           <div className="navbar-end">
-            <a className="navbar-item" href="https://www.wundergrubs.com/">
+            <a className="navbar-item" href="#" onClick={() => {window.open("https://www.wundergrubs.com/")}}>
               Home
                 </a>
-            <a className="navbar-item" href="https://www.wundergrubs.com/store/c1/Featured_Products.html">
+            <a className="navbar-item" href="#" onClick={() => {window.open("https://www.wundergrubs.com/store/c1/Featured_Products.html")}}>
               Shop
                 </a>
             <a className="navbar-item is-active" href="# " onClick={() => { setStatus("login") }}>
@@ -55,10 +55,10 @@ let Header = ({ statu, setStatus }: status) => {
       case 'logged':
         return (
           <div className="navbar-end">
-            <a className="navbar-item" href="https://www.wundergrubs.com/">
+            <a className="navbar-item" href="#" onClick={() => {window.open("https://www.wundergrubs.com/")}}>
               Home
                 </a>
-            <a className="navbar-item" href="https://www.wundergrubs.com/store/c1/Featured_Products.html">
+            <a className="navbar-item" onClick={() => {window.open("https://www.wundergrubs.com/store/c1/Featured_Products.html")}}>
               Shop
                 </a>
             <Link className="navbar-item is-active" href="# " onClick={() => { setStatus("login") }} to="/">

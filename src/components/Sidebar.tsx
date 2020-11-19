@@ -77,7 +77,7 @@ let Sidebar = (props:any) => {
         <p className="menu-label">Other Actions</p>
         <ul className="menu-list">
             <li>
-                <a href="/">Sign Out</a>
+                <Link to="/">Sign Out</Link>
             </li>
         </ul>
       </div>

@@ -29,13 +29,13 @@ export default function Layout({ setStatus, userInfo}: status) {
       <div className="hero-body">   
       <Switch>
         <Route path={`${match.url}/menu`}>
-          <Menu></Menu>
+          <Menu match={match}></Menu>
         </Route>
         <Route path={`${match.url}/transaction`}>
           <Transaction data={res} setData={SetRes} userInfo={userInfo}></Transaction>
         </Route>
         <Route path={`${match.url}/report`}>
-          <Transaction data={repos} setData={SetRes} userInfo={userInfo}></Transaction>
+          <div></div>
         </Route>
       </Switch>  
       </div> 

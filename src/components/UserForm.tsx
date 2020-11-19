@@ -54,7 +54,7 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
             }
           } else {
             setUser(res)
-            his.push('/logged');
+            his.push('/logged/menu');
           }
         })
       }

@@ -3,7 +3,7 @@ import faker from "faker";
 import Sidebar from '../components/Sidebar'
 import Layout from './Layout'
 
-let avatar = faker.image.avatar()
+let avatar = faker.image.animals()
 
 type status = { setStatus: any, user:any, his:any };
 
@@ -18,7 +18,7 @@ export default function Dashboard({ setStatus, user, his }: status) {
               jobtitle= {user['id']}
               hist={his}/>
           </div>
-          <div className="column">
+          <div className="column box">
             <Layout setStatus={setStatus} userInfo={user}></Layout>
           </div>
         </div>
