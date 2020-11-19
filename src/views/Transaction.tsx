@@ -104,7 +104,7 @@ function pdf() {
   doc.save('output.pdf')
 }
 
-async function newTransaction(setData: any, userInfo: any) {
+async function newTransaction(setData: any, userInfo: any, close: any) {
   let transData =
   {
     "userid": (document.getElementById("ID") as HTMLInputElement).value,
@@ -120,6 +120,7 @@ async function newTransaction(setData: any, userInfo: any) {
   transactions(userInfo['id']).then(rest => {
     setData(rest)
   })
+  close()
 }
 
 function fuzzyTextFilterFn(rows: any, id: any, filterValue: any) {
@@ -383,7 +384,7 @@ export default function Transaction({ setData, data, userInfo }: Tdata) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={() => newTransaction(setData, userInfo)} color="primary">
+          <Button onClick={() => newTransaction(setData, userInfo, handleClose)} color="primary">
             Submit
           </Button>
         </DialogActions>
