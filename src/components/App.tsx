@@ -11,7 +11,7 @@ import '../styles/main.scss';
 export default function App() {
   let [status, setStatus] = useState("login");
   let history = useHistory();
-  let [user, setUser] = useState(null);
+  let [user, setUser] = useState(localStorage.getItem('userid') || '');
 
   return (
       <Switch>

@@ -53,6 +53,7 @@ let UserForm = ({ status, setStatus, his, setUser }: statustype) => {
               document.getElementById('emailControl')!.innerHTML += '<p id="emailError" class="help is-danger">Wrong Email/Password</p>'
             }
           } else {
+            localStorage.setItem('userid', res);
             setUser(res)
             his.push('/logged/menu');
           }
